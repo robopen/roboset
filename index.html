@@ -6,7 +6,7 @@
   <meta name="description" content="RoboSet DataSet">
   <meta name="keywords" content="Large-scale robotics dataset">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="media_roboset/main.png" />
+  <link rel="icon" type="image/x-icon" href="media/main.png" />
   <title>RoboSet Dataset</title>
 
 
@@ -14,22 +14,110 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="styesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
-  <link rel="stylesheet" href="index_roboset.css">
 </head>
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
 
+  body {
+    font-family: Poppins;
+  }
+
+  h1,
+  h2,
+  h6 {
+    font-family: Raleway;
+  }
+
+  table,
+  td,
+  th {
+    text-align: center;
+    width: 14.2%;
+    padding: 5px;
+  }
+
+  th {
+    background: #DDEEEE;
+  }
+
+  table {
+    width: 400px;
+    border-collapse: collapse;
+  }
+
+  @media only screen and (max-width: 1026px) {
+    #toc {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: 1026px) {
+    #burger {
+      display: none;
+    }
+  }
+
+  #myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
+
+  #myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+  }
+
+  #myTable th,
+  #myTable td {
+    text-align: left;
+    padding: 12px;
+  }
+
+  #myTable tr {
+    border-bottom: 1px solid #ddd;
+  }
+
+  #myTable tr.header,
+  #myTable tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .parallax {
+    /* The image used */
+    background-image: url("media/main.png");
+
+    /* Set a specific height */
+    min-height: 250px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
 <div class="content" style="margin-right: 5%; margin-left: 5%; ">
 
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a role="button" class="navbar-link" id="burger" aria-label="menu" aria-expanded="True">
-          Table of contents 
-        </a>
+      <a role="button" class="navbar-link" id="burger" aria-label="menu" aria-expanded="True">
+        Table of contents
+      </a>
     </div>
     <div class="navbar-menu" id="nav-links">
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
@@ -38,11 +126,14 @@
             Table of contents
           </a>
           <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://sites.google.com/view/robohive/roboset?authuser=0">
+              Website
+            </a>
             <a class="navbar-item" href="#hierarchy">
               Hierarchy
             </a>
             <a class="navbar-item" href="#datacomposition">
-            Data Composition
+              Data Composition
             </a>
             <a class="navbar-item" href="#data">
               Data
@@ -57,9 +148,9 @@
 
   <p>
     Introducing RoboSet, a large-scale real-world multi-task dataset collected across a range of everyday household
-    table-top activities. RoboSet consists of a mix of kinesthetic demonstrations as well as teleoperated
-    demonstrations. The dataset consists of multi-task activities with a variation in the scene at every demonstration
-    to induce visual diversity i n the data.
+    activities in kitchen scenes. RoboSet consists of a mix of kinesthetic demonstrations as well as teleoperated
+    demonstrations. The dataset consists of multi-task activities with four different camera views per frame, and
+    variations in the scene for every demonstration.
   </p>
 
   <h2 id="hierarchy">
@@ -93,11 +184,11 @@
       <ul>
         <li>
           The dataset has been collected from multiple sources, such as kinesthetic demonstrations and teleoperation.
-          Kinesthetic demonstrated data was collected by playing back a demo trajectory with a variated scene every
-          rollout. However, the teleoperated data was collected using an Oculus Quest 2 controller. The teleoperator
-          would use the controller to guide the robot to perform the task; teleoperation ensured that each rollout was
-          unique. Teleoperation was performed using an Oculus Quest 2 controller. Figure 1(a) shows the composition of
-          the number of demonstrations per source.
+          Kinesthetic demonstrated data was collected by playing back a demo trajectory with a new scene obtained by
+          re-arranging objects, for every rollout. The teleoperated data was collected using an Oculus Quest 2
+          controller. The teleoperator would use the controller to guide the robot to perform the task; teleoperation
+          ensured that each rollout was unique. Overall we have 30,050 trajectories in the dataset, out of which 9,500
+          are collected through teleoperation.
         </li>
       </ul>
     </li>
@@ -107,9 +198,9 @@
       </h6>
       <ul>
         <li>
-          We collected the dataset over multiple camera views, this way we ensure variety in the data and are not bind
-          to
-          a fixed camera viewpoint. Refer to figure 2 for examples of the camera setups.
+          We collected the dataset with 4 distinct camera views per frame. This could be helpful for downstream policy
+          learning where the visual representations are not tied to a specific viewpoint, and are robust to viewpoint
+          variations.
         </li>
       </ul>
     </li>
@@ -119,18 +210,31 @@
       </h6>
       <ul>
         <li>
-          We collected data over a range of tasks and activities, this makes schematic tasks that we can associate and
-          relate to. This would also open up investigation opportunities in multi-step multi-task agents. Opportunities
-          for language guided sequencing and generalization. Refer to figure 3 for a full table of tasks.
+          We have a total of 12 skills, adequately represented across 38 tasks. Each task involves executing a distinct
+          skill on an object in the scene.
+        </li>
+        <li>
+          We categorize all the tasks in terms of semantic activities, such that each activity consists of 4-6 tasks.
+          This could be helpful in developing multi-task multi-step agents that can chain different skills together to
+          solve the entire sequence of tasks in an activity.
+        </li>
+        <li>
+          Since each task is defined through a language instruction, there could be opportunities for language guided
+          sequencing, and generalization with LLMs.
         </li>
       </ul>
     </li>
   </ol>
+  <p>
+    In the tabs below, we include 9,500 teleoperated trajectories, that can be immediately downloaded. Please use the
+    search bar to query a specific task or activity. We will soon update the website with the entire 30,050
+    trajectories.
+  </p>
   <h2 id="data">
     Data
   </h2>
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by task name" title="Type task names">
-  <table class="table is-hoverable is-fullwidth" id="myTable">
+  <table class="table is-hoverable" id="myTable" style="width: 100%;">
     <thead style="background-color:#ddd">
       <th>Activity</th>
       <th>Task</th>
@@ -151,13 +255,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_open_drawer_scene_1.gif" alt="open drawer">
+          <img src="media/baking_prep_open_drawer_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Slide_Open_Drawer_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -172,13 +276,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_open_drawer_scene_4.gif" alt="open drawer">
+          <img src="media/baking_prep_open_drawer_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Slide_Open_Drawer_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -193,13 +297,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_pick_butter_scene_1.gif" alt="open drawer">
+          <img src="media/baking_prep_pick_butter_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Pick_Butter_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -214,13 +318,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_pick_butter_scene_4.gif" alt="open drawer">
+          <img src="media/baking_prep_pick_butter_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Pick_Butter_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -235,13 +339,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_place_butter_scene_1.gif" alt="open drawer">
+          <img src="media/baking_prep_place_butter_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Place_Butter_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -256,13 +360,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_place_butter_scene_4.gif" alt="open drawer">
+          <img src="media/baking_prep_place_butter_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Place_Butter_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -277,13 +381,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_close_drawer_scene_1.gif" alt="open drawer">
+          <img src="media/baking_prep_close_drawer_scene_1.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Slide_Close_Drawer_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -298,13 +402,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/baking_prep_close_drawer_scene_4.gif" alt="open drawer">
+          <img src="media/baking_prep_close_drawer_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Baking_Prep/Baking_Prep_Slide_Close_Drawer_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -322,13 +426,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_pick_mug_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_pick_mug_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Pick_Lid_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -343,13 +447,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_cap_lid_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_cap_lid_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Cap_Lid_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -364,13 +468,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_close_drawer_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_close_drawer_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Slide_Close_Drawer_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -385,13 +489,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_close_oven_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_close_oven_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Flap_Close_Oven_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -406,13 +510,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_pick_towel_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_pick_towel_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Pick_Towel_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -427,13 +531,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/clean_kitchen_wipe_towel_scene_3.gif" alt="open drawer">
+          <img src="media/clean_kitchen_wipe_towel_scene_3.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Clean_Kitchen/Clean_Kitchen_Wipe_Counter_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -451,13 +555,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_open_oven_scene_2.gif" alt="open drawer">
+          <img src="media/heat_soup_open_oven_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Open_Oven_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -472,13 +576,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_open_oven_scene_4.gif" alt="open drawer">
+          <img src="media/heat_soup_open_oven_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Open_Oven_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -493,13 +597,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_pick_bowl_scene_2.gif" alt="open drawer">
+          <img src="media/heat_soup_pick_bowl_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Pick_Bowl_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -514,13 +618,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_pick_bowl_scene_4.gif" alt="open drawer">
+          <img src="media/heat_soup_pick_bowl_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Pick_Bowl_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -535,13 +639,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_slide_in_scene_2.gif" alt="open drawer">
+          <img src="media/heat_soup_slide_in_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Slide_In_Bowl_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -556,13 +660,13 @@
           Scene 4
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_slide_in_scene_4.gif" alt="open drawer">
+          <img src="media/heat_soup_slide_in_scene_4.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Slide_In_Bowl_Scene_4.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -577,34 +681,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/heat_soup_close_oven_scene_2.gif" alt="open drawer">
+          <img src="media/heat_soup_close_oven_scene_2.gif" alt="open drawer">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
-            now</a>
-        </td>
-      </tr>
-      <tr>
-        <th>
-          Heat Soup
-        </th>
-        <td>
-          Flap-Close Oven
-        </td>
-        <td>
-          Scene 2
-        </td>
-        <td>
-          500 Demonstrations
-        </td>
-        <td>
-          <img src="media_roboset/heat_soup_close_oven_scene_2.gif" alt="open drawer">
-        </td>
-        <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -622,13 +705,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_uncap_lid_scene_2.gif" alt="">
+          <img src="media/making_tea_uncap_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Uncap_Lid_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -643,13 +726,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_place_lid_scene_2.gif" alt="">
+          <img src="media/making_tea_place_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Place_Lid_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -664,13 +747,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_pick_tea_scene_2.gif" alt="">
+          <img src="media/making_tea_pick_tea_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Pick_Tea_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -685,13 +768,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_place_tea_scene_2.gif" alt="">
+          <img src="media/making_tea_place_tea_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Place_Tea_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -706,13 +789,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_pick_lid_scene_2.gif" alt="">
+          <img src="media/making_tea_pick_lid_scene_2.gif" alt="">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Pick_Lid_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -727,13 +810,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_tea_cap_lid_scene_2.gif" alt="Cap lid">
+          <img src="media/making_tea_cap_lid_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Tea/Make_Tea_Cap_Lid_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -751,13 +834,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_toast_plunge_toaster_scene_2.gif" alt="Cap lid">
+          <img src="media/making_toast_plunge_toaster_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Toast/Make_Toast_Plunge_Toaster_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -772,13 +855,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_toast_pick_toast_scene_1.gif" alt="Cap lid">
+          <img src="media/making_toast_pick_toast_scene_1.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Toast/Make_Toast_Pick_Toast_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -793,13 +876,13 @@
           Scene 1
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/making_toast_place_toaster_scene_1.gif" alt="Cap lid">
+          <img src="media/making_toast_place_toaster_scene_1.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Make_Toast/Make_Toast_Place_Toast_Scene_1.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -818,13 +901,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/serve_soup_open_oven_scene_2.gif" alt="Cap lid">
+          <img src="media/serve_soup_open_oven_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Serve_Soup/Serve_Soup_Flap_Open_Oven_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -839,13 +922,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/serve_soup_slide_out_scene_2.gif" alt="Cap lid">
+          <img src="media/serve_soup_slide_out_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Serve_Soup/Serve_Soup_Slide_out_Bowl_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -860,13 +943,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/serve_soup_place_bowl_scene_2.gif" alt="Cap lid">
+          <img src="media/serve_soup_place_bowl_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Serve_Soup/Serve_Soup_Place_Bowl_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -881,13 +964,13 @@
           Scene 2
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/serve_soup_close_oven_scene_2.gif" alt="Cap lid">
+          <img src="media/serve_soup_close_oven_scene_2.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Serve_Soup/Serve_Soup_Flap_Close_Oven_Scene_2.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -905,13 +988,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/stow_bowl_open_drawer_scene_3.gif" alt="Cap lid">
+          <img src="media/stow_bowl_open_drawer_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Stow_Bowl/Stow_Bowl_Slide_Open_Drawer_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -926,13 +1009,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/stow_bowl_pick_bowl_scene_3.gif" alt="Cap lid">
+          <img src="media/stow_bowl_pick_bowl_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Stow_Bowl/Stow_Bowl_Pick_Bowl_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -947,13 +1030,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/stow_bowl_place_bowl_scene_3.gif" alt="Cap lid">
+          <img src="media/stow_bowl_place_bowl_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Stow_Bowl/Stow_Bowl_Place_Bowl_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
@@ -968,13 +1051,13 @@
           Scene 3
         </td>
         <td>
-          500 Demonstrations
+          250 Demonstrations
         </td>
         <td>
-          <img src="media_roboset/stow_bowl_close_drawer_scene_3.gif" alt="Cap lid">
+          <img src="media/stow_bowl_close_drawer_scene_3.gif" alt="Cap lid">
         </td>
         <td>
-          <a href="Activities/Heat_Soup/Heat_Soup_Flap_Close_Oven_scene_2/Heat_Soup_Flap_Close_Oven_scene_2.tar.gz">Download
+          <a href="Activities/Stow_Bowl/Stow_Bowl_Slide_Close_Drawer_Scene_3.tar.gz">Download
             now</a>
         </td>
       </tr>
