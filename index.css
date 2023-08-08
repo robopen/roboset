@@ -86,3 +86,9 @@ table {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    /* Footer height */
+}
