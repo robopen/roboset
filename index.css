@@ -92,3 +92,59 @@ table {
     height: 2rem;
     /* Footer height */
 }
+.full-page-image {
+    background-image: url(media/main.png);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.orange {
+    /* Add a semi-transparent over to the image if needed */
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.jay {
+    /* Center your content vertically and horizontally */
+    position: absolute;
+    bottom: 0;
+    /* right: 25; */
+    /* transform: translate(-50%, -50%); */
+    z-index: 20;
+    color: #fff;
+    /* Set the color for your content */
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 150%;
+}
+
+.banner-state {
+    height: 400px;
+    /* or whatever height you want for the banner */
+    transition: height 1.5s ease;
+}
+
+.ncont .jay {
+    opacity: 0;
+    /* transition: opacity 1s ease; */
+    transition: opacity 1.0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    /* #transition: opacity 1.0s ease; */
+    transition: opacity 1.0s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
