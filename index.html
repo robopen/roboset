@@ -22,160 +22,191 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
+<script>
+  window.addEventListener("scroll", function () {
+    let imageDiv = document.querySelector('.full-page-image');
+    const videoElement = document.getElementById('bg-video');
+    if (window.scrollY > 75) {
+      videoElement.style.opacity = 0;
+    }
+    // Check if page is scrolled
+    if (window.scrollY > 50) { // You can adjust this value based on your requirement
+      imageDiv.classList.add('banner-state');
+      imageDiv.classList.add('ncont');
+      imageDiv.style.backgroundImage = `url(media/roboset_banner.png)`;
+    };
+  });
+</script>
 
-<div class="content" style="margin-right: 5%; margin-left: 5%; ">
+<body class="vsc-initialized">
+  <div class="full-page-image">
 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a role="button" class="navbar-link" id="burger" aria-label="menu" aria-expanded="True">
-        Table of contents
-      </a>
+    <video id="bg-video" autoplay loop muted playsinline>
+      <source src="media/big_banner.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <!-- You can add an overlay and content inside the container -->
+    <div class="orange"></div>
+
+    <div class="jay" style="padding: 0 20px">
+      <h1 style="font-family: Poppins; font-size: 250%;">RoboSet: robotics dataset</h1>
+      <p style="font-family: Poppins; font-size: 100%;">Large-scale robotics dataset collected via various sources</p>
     </div>
-    <div class="navbar-menu" id="nav-links">
-      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link" id="toc">
-            Table of contents
+  </div>
+  <div class="content" style="margin-right: 5%; margin-left: 5%; ">
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-link" id="burger" aria-label="menu" aria-expanded="True">
+          Table of contents
+        </a>
+      </div>
+      <div class="navbar-menu" id="nav-links">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" id="toc">`
+              Table of contents
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://robopen.github.io/">
+                Home
+              </a>
+              <a class="navbar-item" href="https://sites.google.com/view/robohive/roboset?authuser=0">
+                Website
+              </a>
+              <a class="navbar-item" href="teleoperation.html">
+                Teleoperation dataset
+              </a>
+              <a class="navbar-item" href="kinesthetic.html">
+                Kinesthetic dataset
+              </a>
+              <a class="navbar-item" href="autonomous.html">
+                Autonomous dataset
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <h1>RoboSet Dataset</h1>
+
+    <p>
+      Introducing RoboSet, a large-scale real-world multi-task dataset collected across a range of everyday household
+      activities in kitchen scenes. RoboSet consists of a mix of kinesthetic demonstrations as well as teleoperated
+      demonstrations. The dataset consists of multi-task activities with four different camera views per frame, and
+      variations in the scene for every demonstration.
+    </p>
+
+
+    <h2 id="datacomposition">
+      Dataset composition
+    </h2>
+
+    <p>The dataset consists of various setups and features</p>
+    <ol>
+      <li>
+        <h6>
+          Source of dataset
+        </h6>
+        <ul>
+          <li>
+            The dataset has been collected from multiple sources, such as kinesthetic demonstrations and teleoperation.
+            Kinesthetic demonstrated data was collected by playing back a demo trajectory with a new scene obtained by
+            re-arranging objects, for every rollout. The teleoperated data was collected using an Oculus Quest 2
+            controller. The teleoperator would use the controller to guide the robot to perform the task; teleoperation
+            ensured that each rollout was unique. Overall we have 28,500 trajectories in the dataset, out of which 9,500
+            are collected through teleoperation, and 19,000 are collected through kinesthetic playback.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h6>
+          Camera viewpoints
+        </h6>
+        <ul>
+          <li>
+            We collected the dataset with 4 distinct camera views per frame. This could be helpful for downstream policy
+            learning where the visual representations are not tied to a specific viewpoint, and are robust to viewpoint
+            variations.
+          </li>
+        </ul>
+      </li>
+      <li>
+        <h6>
+          Different Tasks
+        </h6>
+        <ul>
+          <li>
+            We categorize all the tasks in terms of semantic activities, such that each activity consists of 4-6 tasks.
+            This could be helpful in developing multi-task multi-step agents that can chain different skills together to
+            solve the entire sequence of tasks in an activity.
+          </li>
+          <li>
+            Since each task is defined through a language instruction, there could be opportunities for language guided
+            sequencing, and generalization with LLMs.
+          </li>
+        </ul>
+      </li>
+    </ol>
+    <p>
+      The chart below represents the composition of RoboSet where each bar represents the type of data collected
+      (Teleoperation, Kinesthetic, Autonomous). Use the menu above or the buttons below to navigate to their respective
+      pages to download the dataset.
+    </p>
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <img src="media/roboset.svg" alt="RoboSet composition">
+        <p class="subtitle">RoboSet Data composition</p>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-centered is-vcentered">
+    <div class="column has-text-centered">
+      <div class="publication-links">
+        <span class="link-block">
+          <a href="https://robopen.github.io/roboset/teleoperation.html"
+            class="external-link button is-normal is-rounded is-dark">
+            <span>Teleoperation</span>
           </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://robopen.github.io/">
-              Home
-            </a>
-            <a class="navbar-item" href="https://sites.google.com/view/robohive/roboset?authuser=0">
-              Website
-            </a>
-            <a class="navbar-item" href="teleoperation.html">
-              Teleoperation dataset
-            </a>
-            <a class="navbar-item" href="kinesthetic.html">
-              Kinesthetic dataset
-            </a>
-            <a class="navbar-item" href="autonomous.html">
-              Autonomous dataset
-            </a>
+        </span>
+        <span class="link-block">
+          <a href="https://robopen.github.io/roboset/kinesthetic.html"
+            class="external-link button is-normal is-rounded is-dark">
+            <span>Kinesthetic</span>
+          </a>
+        </span>
+        <span class="link-block">
+          <a href="https://robopen.github.io/roboset/autonomous.html"
+            class="external-link button is-normal is-rounded is-dark">
+            <span>Autonomous</span>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const burgerIcon = document.querySelector('#burger');
+    const navbarMenu = document.querySelector('#nav-links');
+    burgerIcon.addEventListener('click', () => {
+      navbarMenu.classList.toggle('is-active');
+    });
+  </script>
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/"><img
+                class="is-centered has-text-centered" alt="Creative Commons License" style="border-width:0"
+                src="https://i.creativecommons.org/l/by-nc/2.0/88x31.png" /></a><br />This work is
+            licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/">Creative Commons
+              Attribution-NonCommercial 2.0 Generic License</a>.
           </div>
         </div>
       </div>
     </div>
-  </nav>
-
-  <h1>RoboSet Dataset</h1>
-
-  <p>
-    Introducing RoboSet, a large-scale real-world multi-task dataset collected across a range of everyday household
-    activities in kitchen scenes. RoboSet consists of a mix of kinesthetic demonstrations as well as teleoperated
-    demonstrations. The dataset consists of multi-task activities with four different camera views per frame, and
-    variations in the scene for every demonstration.
-  </p>
-
-
-  <h2 id="datacomposition">
-    Dataset composition
-  </h2>
-
-  <p>The dataset consists of various setups and features</p>
-  <ol>
-    <li>
-      <h6>
-        Source of dataset
-      </h6>
-      <ul>
-        <li>
-          The dataset has been collected from multiple sources, such as kinesthetic demonstrations and teleoperation.
-          Kinesthetic demonstrated data was collected by playing back a demo trajectory with a new scene obtained by
-          re-arranging objects, for every rollout. The teleoperated data was collected using an Oculus Quest 2
-          controller. The teleoperator would use the controller to guide the robot to perform the task; teleoperation
-          ensured that each rollout was unique. Overall we have 28,500 trajectories in the dataset, out of which 9,500
-          are collected through teleoperation, and 19,000 are collected through kinesthetic playback.
-        </li>
-      </ul>
-    </li>
-    <li>
-      <h6>
-        Camera viewpoints
-      </h6>
-      <ul>
-        <li>
-          We collected the dataset with 4 distinct camera views per frame. This could be helpful for downstream policy
-          learning where the visual representations are not tied to a specific viewpoint, and are robust to viewpoint
-          variations.
-        </li>
-      </ul>
-    </li>
-    <li>
-      <h6>
-        Different Tasks
-      </h6>
-      <ul>
-        <li>
-          We categorize all the tasks in terms of semantic activities, such that each activity consists of 4-6 tasks.
-          This could be helpful in developing multi-task multi-step agents that can chain different skills together to
-          solve the entire sequence of tasks in an activity.
-        </li>
-        <li>
-          Since each task is defined through a language instruction, there could be opportunities for language guided
-          sequencing, and generalization with LLMs.
-        </li>
-      </ul>
-    </li>
-  </ol>
-  <p>
-    The chart below represents the composition of RoboSet where each bar represents the type of data collected
-    (Teleoperation, Kinesthetic, Autonomous). Use the menu above or the buttons below to navigate to their respective
-    pages to download the dataset.
-  </p>
-  <div class="columns is-centered">
-    <div class="column has-text-centered">
-      <img src="media/roboset.svg" alt="RoboSet composition">
-      <p class="subtitle">RoboSet Data composition</p>
-    </div>
-  </div>
-</div>
-<div class="columns is-centered is-vcentered">
-  <div class="column has-text-centered">
-    <div class="publication-links">
-      <span class="link-block">
-        <a href="https://robopen.github.io/roboset/teleoperation.html"
-          class="external-link button is-normal is-rounded is-dark" >
-          <span>Teleoperation</span>
-        </a>
-      </span>
-      <span class="link-block">
-        <a href="https://robopen.github.io/roboset/kinesthetic.html"
-          class="external-link button is-normal is-rounded is-dark" >
-          <span>Kinesthetic</span>
-        </a>
-      </span>
-      <span class="link-block">
-        <a href="https://robopen.github.io/roboset/autonomous.html" 
-          class="external-link button is-normal is-rounded is-dark">
-          <span>Autonomous</span>
-        </a>
-      </span>
-    </div>
-  </div>
-</div>
-<script>
-  const burgerIcon = document.querySelector('#burger');
-  const navbarMenu = document.querySelector('#nav-links');
-  burgerIcon.addEventListener('click', () => {
-    navbarMenu.classList.toggle('is-active');
-  });
-</script>
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/"><img
-              class="is-centered has-text-centered" alt="Creative Commons License" style="border-width:0"
-              src="https://i.creativecommons.org/l/by-nc/2.0/88x31.png" /></a><br />This work is
-          licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/2.0/">Creative Commons
-            Attribution-NonCommercial 2.0 Generic License</a>.
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
+  </footer>
+</body>
 
 </html>
