@@ -63,16 +63,44 @@
         <div class="container">
             <div class="hero">
                 <div class="hero-body has-text-centered">
-                    <span class="link-block">
-                        <a href="https://dl.fbaipublicfiles.com/RoboSet/KinestheticSet/Activities/Pick_banana_place_in_mug.tar.gz"
-                            class="external-link button is-normal is-rounded is-info" `>
-                            <span>Download sample data</span>
-                        </a>
-                    </span>
-                    <p class="subtitle is-5">
-                        <br><strong>Data details:</strong> Pick Banana and place it in a mug
-
-                    </p>
+                    <h2 id="data">
+                        Data
+                    </h2>
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by task name"
+                        title="Type task names">
+                    <table class="table is-hoverable" id="myTable">
+                        <thead style="background-color:#ddd">
+                            <th>Activity</th>
+                            <th>Task</th>
+                            <th>Scene</th>
+                            <th>Number of demonstrations</th>
+                            <th>Example</th>
+                            <th>Download</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Baking Prep
+                                </th>
+                                <td>
+                                    Slide-Open Drawer
+                                </td>
+                                <td>
+                                    Scene 1
+                                </td>
+                                <td>
+                                    250 Demonstrations
+                                </td>
+                                <td>
+                                    <img src="media/baking_prep_open_drawer_scene_1.gif" alt="open drawer">
+                                </td>
+                                <td>
+                                    <a href="">Download
+                                        now</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -94,5 +122,31 @@
         </div>
     </footer>
 </body>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    const burgerIcon = document.querySelector('#burger');
+    const navbarMenu = document.querySelector('#nav-links');
+    burgerIcon.addEventListener('click', () => {
+        navbarMenu.classList.toggle('is-active');
+    });
+</script>
 
 </html>
