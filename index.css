@@ -103,7 +103,7 @@ html {
 }
 
 .full-page-image {
-    background-image: url(media/roboset_banner.png);
+    background-image: url(media/roboset_bigbanner.png);
     background-size: cover;
     background-position: center;
     height: 100%;
