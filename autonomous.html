@@ -57,56 +57,136 @@
             </div>
         </div>
     </div>
-    <div class="content is-centered is-vcentered">
-        <div class="container">
-            <div class="hero">
-                <div class="hero-body has-text-centered">
-                    <h2 id="data">
-                        Data
-                    </h2>
-                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by task name"
-                        title="Type task names">
-                    <table class="table is-hoverable" id="myTable">
-                        <thead style="background-color:#ddd">
-                            <th>Task</th>
-                            <th>Number of demonstrations</th>
-                            <th>Example</th>
-                            <th>Download</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <strong>Pick up soft toys</strong>
-                                </td>
-                                <td>
-                                    
-                                </td>
-                                <td>
-                                    <video poster="" autoplay muted loop playsinline height="100%">
-                                        <source src="media/auto_test.mp4" type="video/mp4">
-                                    </video>
-                                </td>
-                                <td>
-                                    <a
-                                        href="">Download
-                                        now</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3"><a id="data">Data</a></h2>
+                    <div class="content has-text-justified">
+                        <p><b>Caution: The RH20T dataset comprises volunteer-recorded human-robot interactions, possibly
+                                featuring volunteers' faces and voices. Exercise care to avoid inspecting or sharing
+                                sensitive content; kindly utilize the dataset solely for model training purposes.
+                            </b></p>
+                        <br>
+                        <p><b>Note: </b>We provide a resized version (640x360) of our dataset as the original size is
+                            too large (40TB). After unzipping and extracting images from videos, the current version
+                            would be about 5TB for RGB and 10TB for RGBD. You can use <a
+                                href="https://rclone.org/">Rclone</a> to download files from Gdrive according to <a
+                                href="https://github.com/rh20t/rh20t_api/issues/4">this thread</a>.
+                        </p>
+                        <br>
+                        <p>
+                            <b>Autonomous Bin Pick and Place:</b> <br>
+                            <strong>Set 1</strong>
+                            <br><br>
+                            <video autoplay muted loop nocontrols src="media/auto_test.mp4"></video>
+                            <br><br>
+                            <ul>
+                                <li>
+                                    autonomous_roboset_robopen05_1.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_2.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_2.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_3.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_3.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_4.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_4.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_5.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_5.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_6.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_6.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_7.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_7.tar.gz">Download</a> ) 
+                                </li>
+                            </ul>
+                            <strong>Set 2</strong>
+                            <br><br>
+                            <video autoplay muted loop nocontrols src="media/auto_test.mp4"></video>
+                            <br><br>
+                            <ul>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_1.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_2.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_3.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_4.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_5.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_6.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_7.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_8.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_9.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_10.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_11.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_12.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_13.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_14.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_15.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_16.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_17.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_18.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_19.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                                <li>
+                                    autonomous_roboset_robopen05_softtoys_20.tar.gz (8.0GB) (<a href="https://dl.fbaipublicfiles.com/RoboSet/AutonomousSet/set_1/autonomous_roboset_robopen05_1.tar.gz">Download</a> ) 
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
     <footer class="footer">
         <div class="container">
-          <div class="columns is-centered">
-            <div class="column is-8">
-              <div class="content">
-                This work is licensed under <a href="https://mit-license.org/" target="_blank" rel="license">MIT-License</a>
-              </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        This work is licensed under <a href="https://mit-license.org/" target="_blank"
+                            rel="license">MIT-License</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
     </footer>
 </body>
