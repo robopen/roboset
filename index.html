@@ -69,10 +69,10 @@
             </a>
             <div class="navbar-dropdown">
               <a class="navbar-item" href="https://robopen.github.io/">
-                Home
+                RoboAgent homepage
               </a>
               <a class="navbar-item" href="https://sites.google.com/view/robohive/roboset?authuser=0">
-                Website
+                RoboHive website
               </a>
               <a class="navbar-item" href="teleoperation.html">
                 Teleoperation dataset
@@ -156,9 +156,34 @@
     </p>
     <div class="columns is-centered">
       <div class="column has-text-centered">
-        <img src="media/roboset.svg" alt="RoboSet composition">
-        <p class="subtitle">RoboSet Data composition</p>
+        <img src="media/roboset.svg" alt="RoboSet composition"><br>
+        <p class="subtitle">RoboSet Data Composition</p>
       </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <img src="media/Schema.png" alt="" style="width: 75%; height: auto;"><br>
+        <p class="subtitle">RoboSet Data Schema</p>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="subtitle has-text-centered">Starting code to load RoboSet in python</h2>
+        <div class="box">
+          <pre>
+              <code class="language-python" style="font-size: large;">
+                  import h5py
+                  path = "Path/to/dataset.h5"
+                  h5 = h5py.File(path, 'r')
+                  h5.keys() #Outputs Trials per h5, Trial 0, 1, 2, ...
+                  h5['Trial0'].keys() # outputs data, derived, and config
+                  # to extract the data
+                  h5["Trial0"]['data'][data_key] #where data_key is one of the cells from the data tab 
+              </code>
+          </pre>
+      </div>
+      </div>
+
     </div>
   </div>
   <div class="columns is-centered is-vcentered">
